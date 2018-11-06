@@ -1,0 +1,20 @@
+version: 0.0.1
+questions:
+  {{- if .CreateSamples}}
+  - name: AString
+    type: string
+    prompt: What would you like to call your string?
+    default: nothing
+  - name: ABoolean
+    type: bool
+    prompt: True?
+    default: true
+  - name: ASelect
+    type: select
+    prompt: Whats your selection?
+    default: two
+    options:
+    - one
+    - two
+    - three
+  {{- end}}

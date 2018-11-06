@@ -1,0 +1,6 @@
+version: 0.0.1
+questions:
+  - name: CreateSamples
+    type: bool
+    prompt: generate sample questions?
+    default: true
