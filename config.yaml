@@ -1,6 +1,9 @@
 version: 0.0.1
+from: "git@gitlab.com:techdecaf/generators/npm-module.git"
 questions:
   - name: CreateSamples
     type: bool
     prompt: generate sample questions?
     default: true
+run_after:
+  - "git init"
