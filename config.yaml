@@ -1,9 +1,13 @@
 version: 0.0.1
 from: "git@gitlab.com:techdecaf/generators/npm-module.git"
 questions:
+  - name: Description
+    type: string
+    prompt: what are we building today?
+
   - name: CreateSamples
     type: bool
     prompt: generate sample questions?
     default: true
 run_after:
-  - "git init"
+  - "echo ==== {{ToUpper .Name}} ===="
