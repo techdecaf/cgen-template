@@ -1,0 +1,14 @@
+# FULL DOCUMENTATION CAN BE FOUND HERE: #https://docs.gitlab.com/ce/ci/yaml/
+image: node:14.10-alpine
+
+before_script:
+  - apk add git curl
+  - sh -c "$(curl -fsSL https://raw.github.com/techdecaf/cgen/master/install.sh)"
+  - sh -c "$(curl -fsSL https://raw.github.com/techdecaf/tasks/master/install.sh)"
+
+stages: [test]
+
+test:
+  stage: test
+  script: [tasks run dependencies test]
+  coverage: /All files\s*\|\s*([\d\.]+)/

@@ -1,0 +1,50 @@
+# documentation for tasks can be found @ https://github.com/techdecaf/tasks
+options:
+  log: true
+
+variables:
+  CI_PROJECT_NAME: '{{ReadFile `./.cgen.yaml` | YQ `answers.Name`}}'
+  CI_COMMIT_TAG: '{{TRY `git describe --tags --always --dirty --abbrev=0`}}'
+  CI_COMMIT_REF_NAME: '{{TRY `git rev-parse --abbrev-ref HEAD`}}'
+  CI_COMMIT_SHA: '{{TRY `git rev-parse HEAD`}}'
+
+tasks:
+  default:
+    description: is the task that runs when no tasks have been specified.
+    commands: [tasks list]
+
+  dependencies:
+    description: install all required dependencies
+    commands: [cgen install https://github.com/techdecaf/typescript-core.git]
+
+  build:
+    description: build current project
+    variables:
+      Name: '{{uuidv4}}'
+      AUTHOR: 'user.name@domain.com'
+      DESCRIPTION: 'test description for project'
+    commands: ['cgen -p temp -t {{.CI_PROJECT_NAME}}']
+
+  clean:
+    description: remove files created as part of the build step.
+    commands: [rm -rf temp]
+
+  test:
+    description: run tests
+    dir: temp
+    pre: [clean, build]
+    commands:
+      - cgen upgrade
+      - tasks run dependencies coverage audit
+
+  release:
+    description: bump version and release
+    commands: ['cgen bump -l patch --push']
+
+  lint:
+    description: run linting
+    commands: []
+
+  deploy:
+    description: deploy the current project
+    commands: []
