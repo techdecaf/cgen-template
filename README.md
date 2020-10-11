@@ -1,12 +1,17 @@
-# Typescript-Core
+# cgen template generator
 
-A core typescript project generator to act as a foundation for other typescript projects
+- [cgen template generator](#cgen-template-generator)
+  - [using this project](#using-this-project)
+  - [Template Syntax](#template-syntax)
 
-- [Typescript-Core](#typescript-core)
-  - [Using this Template](#using-this-template)
+## using this project
 
-## Using this Template
+You can use this project to generate additional `cgen` templates.  It provides the very simple basic scaffolding that you need to create new templates and will be in lockstep with the `cgen` project.
 
-1. To start please ensure that you have installed `cgen`. If you have not please see the [install instructions](https://github.com/techdecaf/cgen)
-2. Install this template generator `https://github.com/techdecaf/typescript-core.git`
-3. generate a new project `cgen -t typescript-core -p my_directory`
+1. To start please ensure that you have installed `cgen`.  If you have not please see the [install instructions](https://github.com/techdecaf/cgen)
+2. Install this template generator `cgen -install https://github.com/techdecaf/cgen-template`
+3. create your very own template! `cgen -tmpl cgen-template` or just run `cgen`
+
+...and your done!
+
+## Template Syntax

@@ -1,0 +1,25 @@
+version: 0.0.1
+questions:
+  {{- if .CREATE_SAMPLES}}
+  - name: SAMPLE_STRING
+    type: string
+    prompt: What would you like to call your string
+    default: nothing
+  - name: SAMPLE_BOOLEAN
+    type: bool
+    prompt: Is this true
+    default: true
+  - name: SAMPLE_SELECT
+    type: select
+    prompt: Whats your selection
+    default: two
+    options:
+    - one
+    - two
+    - three
+  - name: SAMPLE_CONSTANT
+    type: constant
+    default: "constant value"
+  {{- end}}
+run_after:
+  - "echo commands to run after template generation"

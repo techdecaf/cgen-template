@@ -1,6 +1,0 @@
-# this file is managed by a cgen template (typescript-project)
-
-trailingComma: 'all'
-arrowParens: 'always'
-singleQuote: true
-printWidth: 80 # add support for eslint to ignore strings
